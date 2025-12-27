@@ -20,3 +20,21 @@
 	"tubes.h"
 	<sstream>
 
+1766832159 source:c:\cpp\tubes-std\tubes_std\data.cpp
+	"tubes.h"
+
+1766833212 c:\cpp\tubes-std\tubes_std\tubes.h
+	<iostream>
+	<vector>
+	<bits/stdc++.h>
+
+1766832159 source:c:\cpp\tubes-std\tubes_std\main.cpp
+	"tubes.h"
+
+1766832159 source:c:\cpp\tubes-std\tubes_std\utils.cpp
+	"tubes.h"
+	<sstream>
+
+1766833225 source:c:\cpp\tubes-std\tubes_std\tubes.cpp
+	"tubes.h"
+

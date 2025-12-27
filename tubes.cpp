@@ -283,3 +283,110 @@ int countAnggotaInKelompok(listKelompok LKp, int ID_kelompok) {
     }
     return jumlahAnggota;
 }
+
+
+// ... kode lama ...
+
+void showKelompokWithMemberCount(listKelompok LKp) {
+    /* Menampilkan tabel berisi Nama Kelompok dan Jumlah Anggotanya */
+    if (firstKelompok(LKp) == NULL) {
+        cout << "Data kelompok kosong." << endl;
+    } else {
+        vector<vector<string>> t;
+        t.push_back({"NO", "NAMA KELOMPOK", "JUMLAH ANGGOTA"});
+
+        adr_kelompok P = firstKelompok(LKp);
+        int i = 1;
+        while (P != NULL) {
+            // Kita gunakan fungsi countAnggotaInKelompok yang sudah kamu buat
+            int count = countAnggotaInKelompok(LKp, infoKelompok(P).ID_kelompok);
+
+            t.push_back({
+                to_string(i),
+                infoKelompok(P).nama_kelompok,
+                to_string(count)
+            });
+
+            P = nextKelompok(P);
+            i++;
+        }
+        table(t);
+    }
+}
+
+void showKelompokSortedByAnggota(listKelompok LKp) {
+    /* Menampilkan list kelompok diurutkan dari anggota terbanyak ke paling sedikit.
+       Logika: Kita salin data ke vector temporary agar tidak merusak pointer List asli,
+       lalu kita sort vector tersebut.
+    */
+    if (firstKelompok(LKp) == NULL) {
+        cout << "Data kelompok kosong." << endl;
+        return;
+    }
+
+    // Struct temporary untuk menampung data sorting
+    struct DataSort {
+        string nama;
+        int jumlah;
+    };
+    vector<DataSort> listSort;
+
+    adr_kelompok P = firstKelompok(LKp);
+    while (P != NULL) {
+        int count = countAnggotaInKelompok(LKp, infoKelompok(P).ID_kelompok);
+        listSort.push_back({infoKelompok(P).nama_kelompok, count});
+        P = nextKelompok(P);
+    }
+
+    // Sorting manual (Bubble Sort) Descending berdasarkan jumlah
+    for (int i = 0; i < listSort.size() - 1; i++) {
+        for (int j = 0; j < listSort.size() - i - 1; j++) {
+            if (listSort[j].jumlah < listSort[j + 1].jumlah) {
+                // Swap
+                DataSort temp = listSort[j];
+                listSort[j] = listSort[j + 1];
+                listSort[j + 1] = temp;
+            }
+        }
+    }
+
+    // Tampilkan tabel hasil sort
+    vector<vector<string>> t;
+    t.push_back({"RANK", "NAMA KELOMPOK", "JUMLAH ANGGOTA"});
+    for (int i = 0; i < listSort.size(); i++) {
+        t.push_back({
+            to_string(i + 1),
+            listSort[i].nama,
+            to_string(listSort[i].jumlah)
+        });
+    }
+
+    cout << "Urutan Kelompok berdasarkan Anggota Terbanyak:" << endl;
+    table(t);
+}
+
+void calculateAverageAnggota(listKelompok LKp) {
+    /* Menghitung rata-rata jumlah anggota per kelompok */
+    if (firstKelompok(LKp) == NULL) {
+        cout << "Data kelompok kosong, rata-rata 0." << endl;
+        return;
+    }
+
+    int totalKelompok = 0;
+    int totalSemuaAnggota = 0;
+
+    adr_kelompok P = firstKelompok(LKp);
+    while (P != NULL) {
+        totalKelompok++;
+        totalSemuaAnggota += countAnggotaInKelompok(LKp, infoKelompok(P).ID_kelompok);
+        P = nextKelompok(P);
+    }
+
+    if (totalKelompok > 0) {
+        double rataRata = (double)totalSemuaAnggota / totalKelompok;
+        cout << "Total Kelompok      : " << totalKelompok << endl;
+        cout << "Total Semua Anggota : " << totalSemuaAnggota << endl;
+        cout << "-------------------------------" << endl;
+        cout << "Rata-rata Anggota   : " << rataRata << " orang/kelompok" << endl;
+    }
+}

@@ -147,6 +147,24 @@ void menu(listKelompok &LKp) {
             cout << "Data berhasil diinisialisasi" << endl;
             pause();
         }
+        else if (choice == 11) {
+            clearScreen();
+            headerMenu("Jumlah Anggota Tiap Kelompok");
+            showKelompokWithMemberCount(LKp);
+            pause();
+        }
+        else if (choice == 12) {
+            clearScreen();
+            headerMenu("Ranking Kelompok (Anggota Terbanyak)");
+            showKelompokSortedByAnggota(LKp);
+            pause();
+        }
+        else if (choice == 13) {
+            clearScreen();
+            headerMenu("Statistik Rata-rata");
+            calculateAverageAnggota(LKp);
+            pause();
+        }
     } while (choice != 0);
 
 }
@@ -177,8 +195,12 @@ void list_menu_utama() {
     cout << "8. Cari Anggota di Kelompok Tertentu" << endl;
     cout << "9. Hapus Anggota Pertama di Kelompok" << endl;
     cout << "10. Inisialisasi data" << endl;
+    cout << "11. Tampilkan Jumlah Anggota Tiap Kelompok" << endl;
+    cout << "12. Tampilkan Kelompok Terurut (Terbanyak -> Sedikit)" << endl;
+    cout << "13. Tampilkan Rata-rata Anggota Kelompok" << endl;
     cout << "0. Keluar" << endl;
     cout << "=================================================" << endl;
+
 }
 
 void menu_input_kelompok(listKelompok &LKp) {
@@ -276,3 +298,4 @@ void menu_input_anggota(listKelompok &LKp) {
         pause();
     }
 }
+

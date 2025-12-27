@@ -97,4 +97,8 @@ void headerMenu(string title, string subtitle);
 void menu_input_kelompok(listKelompok &LKp);
 void menu_input_anggota(listKelompok &LKp);
 
+void showKelompokWithMemberCount(listKelompok LKp);
+void showKelompokSortedByAnggota(listKelompok LKp);
+void calculateAverageAnggota(listKelompok LKp);
+
 #endif // TUBES_H_INCLUDED
