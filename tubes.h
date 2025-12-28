@@ -101,4 +101,6 @@ void showKelompokWithMemberCount(listKelompok LKp);
 void showKelompokSortedByAnggota(listKelompok LKp);
 void calculateAverageAnggota(listKelompok LKp);
 
+void showGroupWithMaxAnggota(listKelompok LKp);
+
 #endif // TUBES_H_INCLUDED

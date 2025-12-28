@@ -23,7 +23,7 @@
 1766832159 source:c:\cpp\tubes-std\tubes_std\data.cpp
 	"tubes.h"
 
-1766833212 c:\cpp\tubes-std\tubes_std\tubes.h
+1766916705 c:\cpp\tubes-std\tubes_std\tubes.h
 	<iostream>
 	<vector>
 	<bits/stdc++.h>
@@ -35,6 +35,9 @@
 	"tubes.h"
 	<sstream>
 
-1766833225 source:c:\cpp\tubes-std\tubes_std\tubes.cpp
+1766916691 source:c:\cpp\tubes-std\tubes_std\tubes.cpp
+	"tubes.h"
+
+1766916641 source:c:\cpp\tubes-std\tubes_std\menu.cpp
 	"tubes.h"
 

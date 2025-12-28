@@ -390,3 +390,41 @@ void calculateAverageAnggota(listKelompok LKp) {
         cout << "Rata-rata Anggota   : " << rataRata << " orang/kelompok" << endl;
     }
 }
+
+void showGroupWithMaxAnggota(listKelompok LKp) {
+    /* Menampilkan kelompok dengan jumlah anggota terbanyak */
+    if (firstKelompok(LKp) == NULL) {
+        cout << "Data kelompok kosong." << endl;
+    } else {
+        adr_kelompok P = firstKelompok(LKp);
+        adr_kelompok maxGroup = P;
+
+        // Asumsi max awal adalah kelompok pertama
+        int maxCount = countAnggotaInKelompok(LKp, infoKelompok(P).ID_kelompok);
+
+        // Iterasi cek kelompok lain
+        P = nextKelompok(P);
+        while (P != NULL) {
+            int currentCount = countAnggotaInKelompok(LKp, infoKelompok(P).ID_kelompok);
+            if (currentCount > maxCount) {
+                maxCount = currentCount;
+                maxGroup = P;
+            }
+            P = nextKelompok(P);
+        }
+
+        cout << "Kelompok dengan anggota terbanyak ditemukan!" << endl;
+        cout << endl;
+
+        // Tampilkan info kelompok pemenang dalam tabel
+        vector<vector<string>> t;
+        t.push_back({"ID", "NAMA KELOMPOK", "KATEGORI", "TOTAL ANGGOTA"});
+        t.push_back({
+            to_string(infoKelompok(maxGroup).ID_kelompok),
+            infoKelompok(maxGroup).nama_kelompok,
+            infoKelompok(maxGroup).kategori_kelompok,
+            to_string(maxCount)
+        });
+        table(t);
+    }
+}

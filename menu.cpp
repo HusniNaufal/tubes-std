@@ -69,23 +69,8 @@ void menu(listKelompok &LKp) {
         }
         else if (choice == 7) {
             clearScreen();
-            headerMenu("Hitung Jumlah Anggota di Kelompok");
-            cout << endl;
-            int id;
-            id = intInput("Masukkan ID Kelompok: ");
-            cout << endl;
-
-            adr_kelompok p = searchKelompok(LKp, id);
-            if(p == NULL) {
-                cout << "Kelompok dengan id: " << id << " tidak ditemukan." << endl;
-            } else {
-                int totalAnggota = countAnggotaInKelompok(LKp, id);
-                if(totalAnggota != -1) {
-                    cout << "Total Anggota di kelompok dengan ID " << id << " adalah " << totalAnggota << endl;
-                }
-            }
-            cout << endl;
-
+            headerMenu("Kelompok Anggota Terbanyak");
+            showGroupWithMaxAnggota(LKp); // <--- Langsung panggil fungsi baru
             pause();
         }
         else if (choice == 8) {
@@ -191,7 +176,7 @@ void list_menu_utama() {
     cout << "4. Cari Kelompok" << endl;
     cout << "5. Tambah Anggota ke Kelompok" << endl;
     cout << "6. Tampilkan Semua Kelompok dan Anggotanya" << endl;
-    cout << "7. Hitung Jumlah Anggota di Kelompok" << endl;
+    cout << "7. Tampilkan Kelompok dengan Anggota Terbanyak" << endl;
     cout << "8. Cari Anggota di Kelompok Tertentu" << endl;
     cout << "9. Hapus Anggota Pertama di Kelompok" << endl;
     cout << "10. Inisialisasi data" << endl;

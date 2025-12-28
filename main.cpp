@@ -10,7 +10,6 @@ int main()
         clearScreen();
         listKelompok LKp;
         createListKelompok(LKp);
-        inisialisasi_data_perusahaan(LKp);
 
         cin.ignore();
 
